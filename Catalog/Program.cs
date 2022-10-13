@@ -1,3 +1,6 @@
+using Catalog.Controllers;
+using Catalog.Dtos;
+using Catalog.Entities;
 using Catalog.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);

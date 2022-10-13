@@ -2,8 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Catalog.Controllers;
+using Catalog.Dtos;
 using Catalog.Entities;
-using Catalog.Repositories;
+
 
 
 namespace Catalog.Repositories
@@ -17,8 +18,9 @@ namespace Catalog.Repositories
             new UserInfo { Id = Guid.NewGuid(), Name = "Joe", Dob = Convert.ToDateTime("1980-12-05"), CreatedDate = DateTimeOffset.UtcNow },
             new UserInfo { Id = Guid.NewGuid(), Name = "Jane", Dob = Convert.ToDateTime("1990-05-10"), CreatedDate = DateTimeOffset.UtcNow },
             new UserInfo { Id = Guid.NewGuid(), Name = "Jimmy", Dob = Convert.ToDateTime("1995-10-20"), CreatedDate = DateTimeOffset.UtcNow }
+            
         };
-
+        
         public UserInfo GetUserInfo(Guid id)
         {
             return users.Where(users => users.Id == id).SingleOrDefault();
@@ -26,7 +28,8 @@ namespace Catalog.Repositories
 
         public IEnumerable<UserInfo> GetUserInfo()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            return users;
         }
     }
 }
