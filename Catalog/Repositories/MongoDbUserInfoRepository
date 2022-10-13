@@ -1,0 +1,52 @@
+using MongoDB.Driver;
+
+using Catalog.Controllers;
+using Catalog.Dtos;
+using Catalog.Entities;
+using Catalog.Settings;
+using Catalog.Utilities;
+
+
+namespace Catalog.Repositories
+{
+    public class MongoDbUserInfoRepository : IUserInfoRepository
+    {
+        
+        private const string databaseName = "catalog";
+        private const string collectionName = "users";
+        private readonly IMongoCollection<UserInfo> userInfoCollection;
+
+        public MongoDbUserInfoRepository(IMongoClient mongoClient)
+        {
+            IMongoDatabase database = mongoClient.GetDatabase(databaseName);
+            userInfoCollection = database.GetCollection<UserInfo>(collectionName);
+        }
+
+        public void CreateUserInfo(UserInfo userInfo)
+        {
+            userInfoCollection.InsertOne(userInfo);
+        }
+
+        public void UpdateUserInfo(UserInfo userInfo)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteUserInfo(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public UserInfo GetUserInfo(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<UserInfo> GetUserInfo()
+        {
+            throw new NotImplementedException();
+        }
+
+    }
+
+}

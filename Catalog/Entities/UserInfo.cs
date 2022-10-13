@@ -1,6 +1,8 @@
 using System.Linq;
 using System.ComponentModel.DataAnnotations;
 
+using MongoDB.Driver;
+
 using Catalog.Controllers;
 using Catalog.Dtos;
 using Catalog.Repositories;

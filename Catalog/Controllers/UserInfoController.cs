@@ -1,14 +1,18 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
+using MongoDB.Driver;
+
 using Catalog.Dtos;
 using Catalog.Entities;
 using Catalog.Repositories;
+using Catalog.Settings;
+using Catalog.Utilities;
 
 namespace Catalog.Controllers
 {
     [ApiController]
-    [Route("userinfo")]
+    [Route("users")]
     public class UserInfoController : ControllerBase
     {
         private readonly IUserInfoRepository repository;

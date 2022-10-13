@@ -1,3 +1,5 @@
+using MongoDB.Driver;
+
 using Catalog.Dtos;
 using Catalog.Entities;
 
@@ -9,6 +11,8 @@ namespace Catalog
     using Catalog.Dtos;
     using Catalog.Entities;
     using Catalog.Repositories;
+    using Catalog.Settings;
+    using Catalog.Utilities;
     
     public static class Extensions{ // also had to restart omnisharp here
         public static UserInfoDto AsDto(this UserInfo userInfo)
