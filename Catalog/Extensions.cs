@@ -21,5 +21,18 @@ namespace Catalog
                 CreatedDate = userInfo.CreatedDate
             };
         }
+
+        // public static MedicationDto AsDto(this Medication med)
+        // {
+        //     return new MedicationDto
+        //     {
+        //         Id = userInfo.Id, // should be user id?
+        //         Name = Medication.Name,
+        //         PassTime = Medication.PassTime,
+        //         Quantity = Medication.Quantity,
+        //         Strength = Medication.Strength,
+        //         CreatedDate = userInfo.CreatedDate
+        //     };
+        // }
     } // class
 } // namespace

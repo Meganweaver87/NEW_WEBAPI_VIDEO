@@ -11,6 +11,7 @@ namespace Catalog.Dtos
     {
         
         [Required]
+        // [NotNull]
         public string? Name {get; init;}
 
         [Required]
