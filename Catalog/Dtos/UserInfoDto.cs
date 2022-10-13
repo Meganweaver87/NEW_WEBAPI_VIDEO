@@ -9,7 +9,7 @@ namespace Catalog.Dtos{
      public record UserInfoDto
     {
         public Guid Id {get; init;} 
-        public string Name {get; init;}
+        public string? Name {get; init;}
         public DateTime Dob {get; init;}
         public DateTimeOffset CreatedDate {get; init;}
     }

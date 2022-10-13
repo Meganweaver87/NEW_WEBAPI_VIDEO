@@ -38,11 +38,65 @@ namespace Catalog.Controllers
         public ActionResult<UserInfoDto> GetUserInfo(Guid id)
         {
             var userInfo = repository.GetUserInfo(id);
+
             if (userInfo is null)
             {
                 return NotFound();
             }
+
             return userInfo.AsDto();
+        }
+
+        [HttpPost]
+        public ActionResult<UserInfoDto> CreateUserInfo(CreateUserInfoDto userInfoDto)
+        {
+            UserInfo userInfo = new()
+            {
+                Id = Guid.NewGuid(),
+                Name = userInfoDto.Name,
+                Dob = userInfoDto.Dob,
+                CreatedDate = DateTimeOffset.UtcNow
+            };
+
+            repository.CreateUserInfo(userInfo);
+
+            return CreatedAtAction(nameof(GetUserInfo), new{id = userInfo.Id}, userInfo.AsDto());
+        }
+
+        [HttpPut("{id}")] // must specify
+        public ActionResult UpdateUserInfo(Guid id, UpdateUserInfoDto userInfoDto)
+        {
+            var existingUser = repository.GetUserInfo(id);
+
+            if (existingUser is null)
+            {
+                return NotFound();
+            }
+
+            UserInfo updatedUserInfo = existingUser with
+            {
+                Name = userInfoDto.Name,
+                Dob = userInfoDto.Dob
+            };
+
+            repository.UpdateUserInfo(updatedUserInfo);
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult DeleteUserInfo(Guid id)
+        {
+            var existingUser = repository.GetUserInfo(id);
+
+            if (existingUser is null)
+            {
+                return NotFound();
+            }
+
+            repository.DeleteUserInfo(id);
+
+            return NoContent();
         }
     }
 }

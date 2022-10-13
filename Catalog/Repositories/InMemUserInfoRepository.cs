@@ -31,5 +31,22 @@ namespace Catalog.Repositories
             //throw new NotImplementedException();
             return users;
         }
+
+        public void CreateUserInfo(UserInfo userInfo)
+        {
+            users.Add(userInfo);
+        }
+
+        public void UpdateUserInfo(UserInfo userInfo)
+        {
+            var index = users.FindIndex(existingUser => existingUser.Id == userInfo.Id);
+            users[index] = userInfo;
+        }
+
+        public void DeleteUserInfo(Guid id)
+        {
+            var index = users.FindIndex(existingUser => existingUser.Id == id);
+            users.RemoveAt(index);
+        }
     }
 }

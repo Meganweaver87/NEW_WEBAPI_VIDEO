@@ -12,6 +12,11 @@ namespace Catalog.Repositories
         IEnumerable<UserInfo> GetUserInfo();
         UserInfo GetUserInfo(Guid id);
 
-        void CreateUser(UserInfo userInfo);
+        void CreateUserInfo(UserInfo userInfo);
+
+        void UpdateUserInfo(UserInfo userInfo);
+
+        void DeleteUserInfo(Guid id);
+
     }
 }
