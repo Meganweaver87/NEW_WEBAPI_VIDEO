@@ -14,17 +14,17 @@ namespace Catalog.Repositories
         
         private const string databaseName = "catalog";
         private const string collectionName = "users";
-        private readonly IMongoCollection<UserInfo> userInfoCollection;
+        private readonly IMongoCollection<UserInfo> usersCollection;
 
         public MongoDbUserInfoRepository(IMongoClient mongoClient)
         {
             IMongoDatabase database = mongoClient.GetDatabase(databaseName);
-            userInfoCollection = database.GetCollection<UserInfo>(collectionName);
+            usersCollection = database.GetCollection<UserInfo>(collectionName);
         }
 
         public void CreateUserInfo(UserInfo userInfo)
         {
-            userInfoCollection.InsertOne(userInfo);
+            usersCollection.InsertOne(userInfo);
         }
 
         public void UpdateUserInfo(UserInfo userInfo)
