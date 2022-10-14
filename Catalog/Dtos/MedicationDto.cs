@@ -13,7 +13,9 @@
 // namespace Catalog.Dtos{
 //      public record MedicationDto
 //     {
-//         public Guid Id {get; init;}
+//         public Guid UserId {get; init;}
+
+//         public Guid MedId {get; init}
 
 //         [Required]
 //         // [NotNull]

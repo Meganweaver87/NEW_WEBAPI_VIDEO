@@ -1,5 +1,6 @@
 // using Microsoft.AspNetCore.Mvc;
 // using System.Linq;
+// using System.Threading.Tasks;
 
 // using MongoDB.Driver;
 
@@ -22,12 +23,12 @@
 //         }
 
 //         [HttpGet]
-//         public IEnumerable<MedicationDto> GetMedication()
+//         public IEnumerable<MedicationDto> GetMedicationAsync()
 //         {
 //             IEnumerable<MedicatonDto> med = null;
 //             try
 //             {
-//                 med = repository.GetMedicaton().Select(med => med.AsDto());
+//                 med = await repository.GetMedicationAsync().Select(med => med.AsDto());
 //             } 
 //             catch (Exception ex) 
 //             {
@@ -39,9 +40,9 @@
 //         }
 
 //         [HttpGet("{id}")]
-//         public ActionResult<MedicationDto> GetMedication(Guid id)
+//         public Task<ActionResult<MedicationDto>> GetMedicationAsync(Guid id)
 //         {
-//             var med = repository.GetMedication(id);
+//             var med = await repository.GetMedication(id);
 
 //             if (med is null)
 //             {
@@ -52,11 +53,12 @@
 //         }
 
 //         [HttpPost]
-//         public ActionResult<MedicationDto> CreateMedication(CreateMedicationDto MedicationDto)
+//         public Task<ActionResult<MedicationDto>> CreateMedicationAsync(CreateMedicationDto MedicationDto)
 //         {
 //             Medication med = new()
 //             {
-//                 Id = Guid.NewGuid(), // should be user id
+//                 UserId = UserInfo.Id,
+//                 MedId = Guid.NewGuid(),
 //                 Name = medDto.Name,
 //                 PassTime = medDto.PassTime,
 //                 Quantity = medDto.Quantity,
@@ -64,15 +66,15 @@
 //                 CreatedDate = DateTimeOffset.UtcNow
 //             };
 
-//             repository.CreateMedication(med);
+//             await repository.CreateMedicationAsync(med);
 
 //             return CreatedAtAction(nameof(GetMedication), new{id = med.Id}, med.AsDto());
 //         }
 
 //         [HttpPut("{id}")] // must specify
-//         public ActionResult UpdateMedication(Guid id, UpdateMedicationDto medDto)
+//         public async Task<ActionResult> UpdateMedicationAsync(Guid id, UpdateMedicationDto medDto)
 //         {
-//             var existingUser = repository.GetMedication(id);
+//             var existingUser = await repository.GetMedicationAsync(id);
 
 //             if (existingUser is null)
 //             {
@@ -87,22 +89,22 @@
 //                 Strength = medDto.Strength
 //             };
 
-//             repository.UpdateMedication(updatedMedication);
+//             await repository.UpdateMedicationAsync(updatedMedication);
 
 //             return NoContent();
 //         }
 
 //         [HttpDelete("{id}")]
-//         public ActionResult DeleteMedication(Guid id) // how do i delete a specific med if they have the same user Id? Will need a med id
+//         public async Task<ctionResult> DeleteMedicationAsync(Guid id) // how do i delete a specific med if they have the same user Id? Will need a med id
 //         {
-//             var existingUser = repository.GetMedication(id);
+//             var existingUser = await repository.GetMedicationAsync(id);
 
 //             if (existingUser is null)
 //             {
 //                 return NotFound();
 //             }
 
-//             repository.DeleteMedication(id);
+//             await repository.DeleteMedication(id);
 
 //             return NoContent();
 //         }

@@ -11,7 +11,8 @@
 // {
 //     public record Medication
 //     {
-//         public Guid Id {get; init;}
+//         public Guid UserId {get; init;}
+//         public Guid MedId (get; init;})
 
 //         // [NotNull]
 //         public string? Name {get; init;} // took out ? because we can use NotNull attribute
