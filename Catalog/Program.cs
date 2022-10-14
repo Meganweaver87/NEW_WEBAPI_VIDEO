@@ -43,7 +43,7 @@ builder.Services.AddHealthChecks()
     (
         mongoDbsettings.ConnectionString,
         name:"mongodb",
-        timeout:TimeSpan.FromSeconds(5),
+        timeout:TimeSpan.FromSeconds(10),
         tags: new[] {"ready"}
     );
 
@@ -56,7 +56,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+if (app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
 
 app.UseAuthorization();
 
