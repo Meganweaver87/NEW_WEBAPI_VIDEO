@@ -21,14 +21,13 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 
-
+using Catalog;
 using Catalog.Controllers;
 using Catalog.Dtos;
 using Catalog.Entities;
 using Catalog.Repositories;
 using Catalog.Settings;
 using Catalog.Utilities;
-
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 using MongoDB.Driver;
 
+using Catalog;
 using Catalog.Controllers;
 using Catalog.Entities;
 using Catalog.Repositories;
@@ -13,11 +14,11 @@ namespace Catalog.Dtos
     public record UpdateUserInfoDto
     {
         
-        [Required]
+       // [Required]
         // [NotNull]
         public string? Name {get; init;}
 
-        [Required]
+       // [Required]
         [CustomDate]  
         public DateTime Dob {get; init;}
         

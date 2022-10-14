@@ -24,7 +24,7 @@ namespace Catalog.Repositories
             
         };
         
-        public UserInfo GetUserInfo(Guid id)
+        public UserInfo GetUserInfoAsync(Guid id)
         {
             return users.Where(users => users.Id == id).SingleOrDefault();
         }
@@ -35,18 +35,18 @@ namespace Catalog.Repositories
             return users;
         }
 
-        public void CreateUserInfo(UserInfo userInfo)
+        public void CreateUserInfoAsync(UserInfo userInfo)
         {
             users.Add(userInfo);
         }
 
-        public void UpdateUserInfo(UserInfo userInfo)
+        public void UpdateUserInfoAsync(UserInfo userInfo)
         {
             var index = users.FindIndex(existingUser => existingUser.Id == userInfo.Id);
             users[index] = userInfo;
         }
 
-        public void DeleteUserInfo(Guid id)
+        public void DeleteUserInfoAsync(Guid id)
         {
             var index = users.FindIndex(existingUser => existingUser.Id == id);
             users.RemoveAt(index);

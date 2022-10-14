@@ -41,7 +41,7 @@ namespace Catalog.Controllers
         [HttpGet("{id}")]
         public ActionResult<UserInfoDto> GetUserInfo(Guid id)
         {
-            var userInfo = repository.GetUserInfo(id);
+            var userInfo = repository.GetUserInfoAsync(id);
 
             if (userInfo is null)
             {
@@ -62,7 +62,7 @@ namespace Catalog.Controllers
                 CreatedDate = DateTimeOffset.UtcNow
             };
 
-            repository.CreateUserInfo(userInfo);
+            repository.CreateUserInfoAsync(userInfo);
 
             return CreatedAtAction(nameof(GetUserInfo), new{id = userInfo.Id}, userInfo.AsDto());
         }
@@ -70,7 +70,7 @@ namespace Catalog.Controllers
         [HttpPut("{id}")] // must specify
         public ActionResult UpdateUserInfo(Guid id, UpdateUserInfoDto userInfoDto)
         {
-            var existingUser = repository.GetUserInfo(id);
+            var existingUser = repository.GetUserInfoAsync(id);
 
             if (existingUser is null)
             {
@@ -83,7 +83,7 @@ namespace Catalog.Controllers
                 Dob = userInfoDto.Dob
             };
 
-            repository.UpdateUserInfo(updatedUserInfo);
+            repository.UpdateUserInfoAsync(updatedUserInfo);
 
             return NoContent();
         }
@@ -91,14 +91,14 @@ namespace Catalog.Controllers
         [HttpDelete("{id}")]
         public ActionResult DeleteUserInfo(Guid id)
         {
-            var existingUser = repository.GetUserInfo(id);
+            var existingUser = repository.GetUserInfoAsync(id);
 
             if (existingUser is null)
             {
                 return NotFound();
             }
 
-            repository.DeleteUserInfo(id);
+            repository.DeleteUserInfoAsync(id);
 
             return NoContent();
         }

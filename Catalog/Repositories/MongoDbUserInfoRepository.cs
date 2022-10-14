@@ -1,3 +1,6 @@
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 
 using Catalog.Controllers;
@@ -16,35 +19,40 @@ namespace Catalog.Repositories
         private const string collectionName = "users";
         private readonly IMongoCollection<UserInfo> usersCollection;
 
+        private readonly FilterDefinitionBuilder<UserInfo> filterBuilder = Builders<UserInfo>.Filter;
+
         public MongoDbUserInfoRepository(IMongoClient mongoClient)
         {
             IMongoDatabase database = mongoClient.GetDatabase(databaseName);
             usersCollection = database.GetCollection<UserInfo>(collectionName);
         }
 
-        public void CreateUserInfo(UserInfo userInfo)
+        public void CreateUserInfoAsync(UserInfo userInfo)
         {
             usersCollection.InsertOne(userInfo);
         }
 
-        public void UpdateUserInfo(UserInfo userInfo)
+        public void UpdateUserInfoAsync(UserInfo userInfo)
         {
-            throw new NotImplementedException();
+            var filter = filterBuilder.Eq(existingUser => existingUser.Id, userInfo.Id);
+            usersCollection.ReplaceOne(filter, userInfo);
         }
 
-        public void DeleteUserInfo(Guid id)
+        public void DeleteUserInfoAsync(Guid id)
         {
-            throw new NotImplementedException();
+           var filter = filterBuilder.Eq(userInfo => userInfo.Id, id);
+           usersCollection.DeleteOne(filter);
         }
 
-        public UserInfo GetUserInfo(Guid id)
+        public UserInfo GetUserInfoAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var filter = filterBuilder.Eq(userInfo => userInfo.Id, id);
+            return usersCollection.Find(filter).SingleOrDefault();
         }
 
         public IEnumerable<UserInfo> GetUserInfo()
         {
-            throw new NotImplementedException();
+            return usersCollection.Find(new BsonDocument()).ToList();
         }
 
     }

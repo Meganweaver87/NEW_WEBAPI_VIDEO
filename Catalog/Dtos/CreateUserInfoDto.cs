@@ -13,11 +13,11 @@ namespace Catalog.Dtos
     public record CreateUserInfoDto
     {
         
-        [Required]
+       // [Required]
         // [NotNull]
         public string? Name {get; init;}
 
-        [Required]
+       // [Required]
         [CustomDate]  
         public DateTime Dob {get; init;}
         
