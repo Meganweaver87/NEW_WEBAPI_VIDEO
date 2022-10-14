@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using System.Threading.Tasks;
 
 using MongoDB.Driver;
 
@@ -22,12 +23,12 @@ namespace Catalog.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<UserInfoDto> GetUserInfo()
+        public async Task<IEnumerable<UserInfoDto>> GetUserInfoAsync()
         {
             IEnumerable<UserInfoDto> userInfo = null;
             try
             {
-                userInfo = repository.GetUserInfo().Select(userInfo => userInfo.AsDto());
+                userInfo = (await repository.GetUserInfoAsync()).Select(userInfo => userInfo.AsDto());
             } 
             catch (Exception ex) 
             {
@@ -39,9 +40,9 @@ namespace Catalog.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<UserInfoDto> GetUserInfo(Guid id)
+        public async Task<ActionResult<UserInfoDto>> GetUserInfoAsync(Guid id)
         {
-            var userInfo = repository.GetUserInfoAsync(id);
+            var userInfo = await repository.GetUserInfoAsync(id);
 
             if (userInfo is null)
             {
@@ -52,7 +53,7 @@ namespace Catalog.Controllers
         }
 
         [HttpPost]
-        public ActionResult<UserInfoDto> CreateUserInfo(CreateUserInfoDto userInfoDto)
+        public async Task<ActionResult<UserInfoDto>> CreateUserInfoAsync(CreateUserInfoDto userInfoDto)
         {
             UserInfo userInfo = new()
             {
@@ -62,15 +63,15 @@ namespace Catalog.Controllers
                 CreatedDate = DateTimeOffset.UtcNow
             };
 
-            repository.CreateUserInfoAsync(userInfo);
+            await repository.CreateUserInfoAsync(userInfo);
 
-            return CreatedAtAction(nameof(GetUserInfo), new{id = userInfo.Id}, userInfo.AsDto());
+            return CreatedAtAction(nameof(GetUserInfoAsync), new{id = userInfo.Id}, userInfo.AsDto());
         }
 
         [HttpPut("{id}")] // must specify
-        public ActionResult UpdateUserInfo(Guid id, UpdateUserInfoDto userInfoDto)
+        public async Task<ActionResult> UpdateUserInfoAsync(Guid id, UpdateUserInfoDto userInfoDto)
         {
-            var existingUser = repository.GetUserInfoAsync(id);
+            var existingUser = await repository.GetUserInfoAsync(id);
 
             if (existingUser is null)
             {
@@ -83,22 +84,22 @@ namespace Catalog.Controllers
                 Dob = userInfoDto.Dob
             };
 
-            repository.UpdateUserInfoAsync(updatedUserInfo);
+            await repository.UpdateUserInfoAsync(updatedUserInfo);
 
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public ActionResult DeleteUserInfo(Guid id)
+        public async Task<ActionResult> DeleteUserInfoAsync(Guid id)
         {
-            var existingUser = repository.GetUserInfoAsync(id);
+            var existingUser = await repository.GetUserInfoAsync(id);
 
             if (existingUser is null)
             {
                 return NotFound();
             }
 
-            repository.DeleteUserInfoAsync(id);
+           await  repository.DeleteUserInfoAsync(id);
 
             return NoContent();
         }

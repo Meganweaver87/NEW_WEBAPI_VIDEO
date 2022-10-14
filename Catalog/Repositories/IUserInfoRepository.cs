@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 using MongoDB.Driver;
@@ -13,14 +14,14 @@ namespace Catalog.Repositories
 {
     public interface IUserInfoRepository
     {
-        IEnumerable<UserInfo> GetUserInfo();
-        UserInfo GetUserInfo(Guid id);
+        Task<IEnumerable<UserInfo>> GetUserInfoAsync();
+        Task<UserInfo> GetUserInfoAsync(Guid id);
 
-        void CreateUserInfo(UserInfo userInfo);
+        Task CreateUserInfoAsync(UserInfo userInfo);
 
-        void UpdateUserInfo(UserInfo userInfo);
+        Task UpdateUserInfoAsync(UserInfo userInfo);
 
-        void DeleteUserInfo(Guid id);
+        Task DeleteUserInfoAsync(Guid id);
 
     }
 }

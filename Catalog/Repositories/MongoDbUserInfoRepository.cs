@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
@@ -27,32 +29,32 @@ namespace Catalog.Repositories
             usersCollection = database.GetCollection<UserInfo>(collectionName);
         }
 
-        public void CreateUserInfoAsync(UserInfo userInfo)
+        public async Task CreateUserInfoAsync(UserInfo userInfo)
         {
-            usersCollection.InsertOne(userInfo);
+            await usersCollection.InsertOneAsync(userInfo);
         }
 
-        public void UpdateUserInfoAsync(UserInfo userInfo)
+        public async Task UpdateUserInfoAsync(UserInfo userInfo)
         {
             var filter = filterBuilder.Eq(existingUser => existingUser.Id, userInfo.Id);
-            usersCollection.ReplaceOne(filter, userInfo);
+            await usersCollection.ReplaceOneAsync(filter, userInfo);
         }
 
-        public void DeleteUserInfoAsync(Guid id)
+        public async Task DeleteUserInfoAsync(Guid id)
         {
            var filter = filterBuilder.Eq(userInfo => userInfo.Id, id);
-           usersCollection.DeleteOne(filter);
+           await usersCollection.DeleteOneAsync(filter);
         }
 
-        public UserInfo GetUserInfoAsync(Guid id)
+        public async Task<UserInfo> GetUserInfoAsync(Guid id)
         {
             var filter = filterBuilder.Eq(userInfo => userInfo.Id, id);
-            return usersCollection.Find(filter).SingleOrDefault();
+            return await usersCollection.Find(filter).SingleOrDefaultAsync();
         }
 
-        public IEnumerable<UserInfo> GetUserInfo()
+        public async Task<IEnumerable<UserInfo>> GetUserInfoAsync()
         {
-            return usersCollection.Find(new BsonDocument()).ToList();
+            return await usersCollection.Find(new BsonDocument()).ToListAsync();
         }
 
     }

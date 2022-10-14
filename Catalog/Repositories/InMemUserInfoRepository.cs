@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Linq;
 
 using MongoDB.Driver;
@@ -24,32 +25,36 @@ namespace Catalog.Repositories
             
         };
         
-        public UserInfo GetUserInfoAsync(Guid id)
+        public async Task<UserInfo> GetUserInfoAsync(Guid id)
         {
-            return users.Where(users => users.Id == id).SingleOrDefault();
+            var userInfo = users.Where(userInfo => userInfo.Id == id).SingleOrDefault();
+            return await Task.FromResult(userInfo);
         }
 
-        public IEnumerable<UserInfo> GetUserInfo()
+        public async Task<IEnumerable<UserInfo>> GetUserInfoAsync()
         {
             //throw new NotImplementedException();
-            return users;
+            return await Task.FromResult(users);
         }
 
-        public void CreateUserInfoAsync(UserInfo userInfo)
+        public async Task CreateUserInfoAsync(UserInfo userInfo)
         {
             users.Add(userInfo);
+            await Task.CompletedTask;
         }
 
-        public void UpdateUserInfoAsync(UserInfo userInfo)
+        public async Task UpdateUserInfoAsync(UserInfo userInfo)
         {
             var index = users.FindIndex(existingUser => existingUser.Id == userInfo.Id);
             users[index] = userInfo;
+            await Task.CompletedTask;
         }
 
-        public void DeleteUserInfoAsync(Guid id)
+        public async Task DeleteUserInfoAsync(Guid id)
         {
             var index = users.FindIndex(existingUser => existingUser.Id == id);
             users.RemoveAt(index);
+            await Task.CompletedTask;
         }
     }
 }
