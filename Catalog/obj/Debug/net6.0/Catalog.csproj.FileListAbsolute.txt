@@ -41,3 +41,6 @@ C:\Users\Rilak\LaunchCode_Unit_2\NEW_WEBAPI_VIDEO\Catalog\bin\Debug\net6.0\runti
 C:\Users\Rilak\LaunchCode_Unit_2\NEW_WEBAPI_VIDEO\Catalog\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
 C:\Users\Rilak\LaunchCode_Unit_2\NEW_WEBAPI_VIDEO\Catalog\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
 C:\Users\Rilak\LaunchCode_Unit_2\NEW_WEBAPI_VIDEO\Catalog\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
+C:\Users\Rilak\LaunchCode_Unit_2\NEW_WEBAPI_VIDEO\Catalog\bin\Debug\net6.0\HealthChecks.MongoDb.dll
+C:\Users\Rilak\LaunchCode_Unit_2\NEW_WEBAPI_VIDEO\Catalog\bin\Debug\net6.0\Microsoft.Extensions.Diagnostics.HealthChecks.dll
+C:\Users\Rilak\LaunchCode_Unit_2\NEW_WEBAPI_VIDEO\Catalog\bin\Debug\net6.0\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
