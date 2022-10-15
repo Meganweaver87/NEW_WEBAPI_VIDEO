@@ -44,3 +44,4 @@ C:\Users\Rilak\LaunchCode_Unit_2\NEW_WEBAPI_VIDEO\Catalog\bin\Debug\net6.0\runti
 C:\Users\Rilak\LaunchCode_Unit_2\NEW_WEBAPI_VIDEO\Catalog\bin\Debug\net6.0\HealthChecks.MongoDb.dll
 C:\Users\Rilak\LaunchCode_Unit_2\NEW_WEBAPI_VIDEO\Catalog\bin\Debug\net6.0\Microsoft.Extensions.Diagnostics.HealthChecks.dll
 C:\Users\Rilak\LaunchCode_Unit_2\NEW_WEBAPI_VIDEO\Catalog\bin\Debug\net6.0\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
+C:\Users\Rilak\LaunchCode_Unit_2\NEW_WEBAPI_VIDEO\Catalog\bin\Debug\net6.0\Catalog.staticwebassets.runtime.json

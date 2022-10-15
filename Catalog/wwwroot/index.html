@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Rxminder</title>
+    <link rel="stylesheet" href="css/site.css" />
+</head>
+
+<body>
+    <h1>Rxminder</h1>
+    <h3>Add</h3>
+    <form action="javascript:void(0);" method="POST" onsubmit="addUserInfo()">
+        <input type="text" id="add-name" placeholder="Name">
+        <input type="text" id="add-dob" placeholder="Birth date yyyy-mm-dd">
+        <input type="submit" value="Add">
+    </form>
+
+  
+    <div id="editForm" class="hello">
+        <h3>Edit</h3>
+        <form action="javascript:void(0);" onsubmit="updateUserInfo()">
+            <input type="hidden" id="edit-id">
+            <input type="text" id="edit-name">
+            <input type="text" id="edit-dob">
+            <input type="submit" value="Save">
+            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+        </form>
+    </div>
+
+    <p id="counter"> </p>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Birth Date</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tbody id="todos"></tbody>
+    </table>
+
+    <script src="js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        getUsers();
+    </script>
+</body>
+</html>
+
+
+<!-- ///////////////////////////////////////////////////////////////////// -->
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Rxminder</title>
+    <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+    <h1>Rxminder</h1>
+    <h3>Add User</h3>
+    <form action="javascript:void(0);" method="POST" onsubmit="addUsers()">
+        <input type="text" id="add-name" placeholder="New user name">
+        <input type="text" id="add-dob" placeholder="birth date yyyy-mm-dd">
+        <input type="submit" value="Add">
+    </form>
+
+    <div id="editForm" class=“hello”>
+        <h3>Edit</h3>
+        <form action="javascript:void(0);" onsubmit="updateUsers()">
+            <input type="hidden" id="edit-id">
+           <!—- <input type="checkbox" id="edit-isComplete"> —->
+            <input type="text" id="edit-name">
+            <input type=“text” id=“edit-dob”>
+            <input type="submit" value="Save">
+            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+        </form>
+    </div>
+
+    <p id="counter"></p>
+
+    <table>
+        <tr>
+            <!—- <th>Is Current?</th> —->
+            <th>Name</th>
+            <th>Birth Date</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tbody id="todos"></tbody>
+    </table>
+
+    <script src="js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        getUsers();
+    </script>
+</body>
+</html> -->
