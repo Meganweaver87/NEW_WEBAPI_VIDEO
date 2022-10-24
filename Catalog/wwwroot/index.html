@@ -8,11 +8,11 @@
 
 <body>
     <h1>Rxminder</h1>
-    <h3>Add</h3>
+    <h3>Add User</h3>
     <form action="javascript:void(0);" method="POST" onsubmit="addUserInfo()">
-        <input type="text" id="add-name" placeholder="Name">
-        <input type="text" id="add-dob" placeholder="Birth date yyyy-mm-dd">
-        <input type="submit" value="Add">
+        <input type="text" id="add-name" placeholder="Name" class="add-name">
+        <input type="text" id="add-dob" placeholder="Birth date yyyy-mm-dd" class="add-dob">
+        <input type="submit" value="Add User" class="button">
     </form>
 
   
@@ -20,9 +20,9 @@
         <h3>Edit</h3>
         <form action="javascript:void(0);" onsubmit="updateUserInfo()">
             <input type="hidden" id="edit-id">
-            <input type="text" id="edit-name">
-            <input type="text" id="edit-dob">
-            <input type="submit" value="Save">
+            <input type="text" id="edit-name" class="edit-name">
+            <input type="text" id="edit-dob" class="edit-dob">
+            <input type="submit" value="Save Changes" class="button">
             <a onclick="closeInput()" aria-label="Close">&#10006;</a>
         </form>
     </div>

@@ -1,24 +1,111 @@
-input[type='submit'], button, [aria-label] {
-    cursor: pointer;
+body {
+    background-color: #eceeef;
 }
+
+h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    color: #737576;
+}
+
+h3 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    color:#77797a;
+}
+
+input[type='submit'], button, [aria-label] {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background-color: #547eae;
+    color: #f5f8f9;
+    border-radius: 4px;
+}
+
+input[type='submit']:hover, button, [aria-label] {
+    background-color: #608ec3;
+}
+
+
+.button { /* adopts the styling from the input code blocks, appears on add, save, and cancel edit buttons */
+    height: 22px;
+    width: 120px;
+    background-color: #547eae;
+}
+
+
+.button:hover { 
+    /* background-color:beige; */
+    background-color: #608ec3;
+}
+
+
+input[type="text"] {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    letter-spacing: 1px;
+    background-color: #f5f8f9;
+    border-radius: 4px;
+}
+
 
 #editForm {
     display: none;
 }
 
+.add-name {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    letter-spacing: 1px;
+    width: 200px;
+    background-color: #eceeef;
+}
+
+.add-dob {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    letter-spacing: 1px;
+    width: 200px;
+    background-color: #eceeef;
+}
+
+.edit-name {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    letter-spacing: 1px;
+    width: 200px;
+    background-color: #eceeef;
+}
+
+.edit-dob {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    letter-spacing: 1px;
+    width: 200px;
+    background-color: #eceeef;
+}
+
 table {
-    font-family: Arial, sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     border: 1px solid;
     border-radius:4px;
     border-collapse: collapse;
+    padding: 8px;
 }
 
 th {
-    background-color: #d2eff8;
-    padding: 5px;
+    background-color: #547eae;
+    color: #f5f8f9;
+    letter-spacing: 1px;
+    padding: 6px;
+    font-weight: lighter;
 }
 
 td {
-    border: 1px solid;
-    padding: 8px;
+    border-bottom: 1px solid;
+    padding: 12px;
+    background-color: #eceeef;
+    letter-spacing: 1px;
+}
+
+td:hover {
+    background-color: #f5f8f9;
 }
